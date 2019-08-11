@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
     template: 
         `<h2>
             {{ title }}
+            <h2 [textContent]="title"></h2>
             <img src="{{ imageUrl }}" />
             <img [src]="imageUrl" />           <!-- PROPERTY BINDING -->
-            <ul>
+            <ul>                    
                 <li *ngFor="let course of courses">
                     {{ course }}
                 </li>
