@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
     template: 
         `<h2>
             {{ title }}
+            <img src="{{ imageUrl }}" />
+            <img [src]="imageUrl" />           <!-- PROPERTY BINDING -->
             <ul>
                 <li *ngFor="let course of courses">
                     {{ course }}
@@ -16,6 +18,7 @@ import { Component } from '@angular/core';
 
 export class CoursesComponent {
     title = "List of courses";
+    imageUrl = "http://lorempixel.com/400/200";
     courses;
 
     constructor(service: CoursesService) {
