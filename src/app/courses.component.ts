@@ -14,12 +14,18 @@ import { Component } from '@angular/core';
                     {{ course }}
                 </li>
             </ul>
+            <table>
+                <tr>
+                    <td [attr.colspan]="colSpan" ></td>
+                </tr>
+            </table>
         </h2>`
 }) 
 
 export class CoursesComponent {
     title = "List of courses";
     imageUrl = "http://lorempixel.com/400/200";
+    colSpan=2;
     courses;
 
     constructor(service: CoursesService) {
