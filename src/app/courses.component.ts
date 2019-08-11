@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
         <div (click)="onDivClicked()">
             <button class="btn btn-primary" (click)="onSave($event)">Save</button>  <!-- CLASS BINDING -->
         </div>
-        
+        <input (keyup.enter)="onKeyUp()"/>        
         `
 }) 
 
@@ -40,6 +40,10 @@ export class CoursesComponent {
     onSave($event) {
         console.log("Button was clicked", $event);
         $event.stopPropagation();   //To stop EVENT BUBBLING (Event within event)
+    }
+
+    onKeyUp() {
+        console.log("ENTER is pressed");    //When enter is pressed input field
     }
 
     constructor(service: CoursesService) {
