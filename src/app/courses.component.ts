@@ -17,7 +17,12 @@ import { Component } from '@angular/core';
                 <td [attr.colspan]="colSpan" ></td>
             </tr>
         </table>
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>  <!-- CLASS BINDING -->
+        <button [style.backgroundColor]="isActive ? 'blue' : 'white' ">Save</button>  <!-- STYLE BINDING -->
+        <div (click)="onDivClicked()">
+            <button class="btn btn-primary" (click)="onSave($event)">Save</button>  <!-- CLASS BINDING -->
+        </div>
+        
         `
 }) 
 
@@ -25,7 +30,17 @@ export class CoursesComponent {
     title = "List of courses";
     imageUrl = "http://lorempixel.com/400/200";
     colSpan=2;
+    isActive = true;
     courses;
+
+    onDivClicked() {
+        console.log("Div was clicked");
+    }
+
+    onSave($event) {
+        console.log("Button was clicked", $event);
+        $event.stopPropagation();   //To stop EVENT BUBBLING (Event within event)
+    }
 
     constructor(service: CoursesService) {
         this.courses = service.getCourses();
