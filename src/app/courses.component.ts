@@ -23,7 +23,10 @@ import { Component } from '@angular/core';
             <button class="btn btn-primary" (click)="onSave($event)">Save</button>  <!-- CLASS BINDING -->
         </div>
         <input (keyup.enter)="onKeyUp($event)"/>        
-        <input #email (keyup.enter)="onKeyUp1(email.value)"/>        
+        <input #email (keyup.enter)="onKeyUp1(email.value)"/>        <!--TEMPLATE VARIABLE-->
+        <input [value]="phone1" (keyup.enter)="onKeyUp2()"/>        <!--ONE WAY BINDING-->
+        <input [(ngModel)]="phone1" (keyup.enter)="onKeyUp2()"/>        <!--TWO WAY BINDING: Import FormsModule as well in app.module-->
+
         `
 }) 
 
@@ -32,6 +35,7 @@ export class CoursesComponent {
     imageUrl = "http://lorempixel.com/400/200";
     colSpan=2;
     isActive = true;
+    phone1="123456789";
     courses;
 
     onDivClicked() {
@@ -50,6 +54,10 @@ export class CoursesComponent {
     
     onKeyUp1($value) {
         console.log("ENTER is pressed with value: ", $value);    //When enter is pressed input field
+    }
+
+    onKeyUp2() {
+        console.log("ENTER is pressed with value: ", this.phone1);    //When enter is pressed input field
     }
 
     constructor(service: CoursesService) {
