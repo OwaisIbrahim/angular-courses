@@ -22,7 +22,8 @@ import { Component } from '@angular/core';
         <div (click)="onDivClicked()">
             <button class="btn btn-primary" (click)="onSave($event)">Save</button>  <!-- CLASS BINDING -->
         </div>
-        <input (keyup.enter)="onKeyUp()"/>        
+        <input (keyup.enter)="onKeyUp($event)"/>        
+        <input #email (keyup.enter)="onKeyUp1(email.value)"/>        
         `
 }) 
 
@@ -42,8 +43,13 @@ export class CoursesComponent {
         $event.stopPropagation();   //To stop EVENT BUBBLING (Event within event)
     }
 
-    onKeyUp() {
-        console.log("ENTER is pressed");    //When enter is pressed input field
+    onKeyUp($event) {
+        console.log("ENTER is pressed with value: ", $event.target.value);    //When enter is pressed input field
+    }
+
+    
+    onKeyUp1($value) {
+        console.log("ENTER is pressed with value: ", $value);    //When enter is pressed input field
     }
 
     constructor(service: CoursesService) {
