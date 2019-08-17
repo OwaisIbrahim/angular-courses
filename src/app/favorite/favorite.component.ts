@@ -18,6 +18,7 @@ export class FavoriteComponent implements OnInit {
   onClick() {
     this.isSelected = !this.isSelected;
     //emit to tell that something has changed 
-    this.change.emit();
+    //this.isSelected is passed to all subscriber (where <favorite> is used)
+    this.change.emit({ newValue: this.isSelected });
   }
 }
