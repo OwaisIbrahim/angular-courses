@@ -1,7 +1,12 @@
+<style>
+    .glyphicon {
+        background-color: blue;
+      }
+</style>
 <h1>Hello</h1>
 <span
     class="glyphicon"
     [class.glyphicon-star]="isSelected"
     [class.glyyphicon-star-empty]="!isSelected"
-    (click)="onClick"
+    (click)="onClick()"
 ></span>
