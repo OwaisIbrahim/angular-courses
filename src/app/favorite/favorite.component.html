@@ -1,1 +1,7 @@
-<p>favorite works!</p>
+<h1>Hello</h1>
+<span
+    class="glyphicon"
+    [class.glyphicon-star]="isSelected"
+    [class.glyyphicon-star-empty]="!isSelected"
+    (click)="onClick"
+></span>
