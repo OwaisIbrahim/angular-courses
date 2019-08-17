@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 export interface FavoriteChangedEventArgs {
   newValue: boolean
@@ -7,18 +7,8 @@ export interface FavoriteChangedEventArgs {
 @Component({
   selector: 'favorite',
   templateUrl: './favorite.component.html',
-  styles: [
-    `
-      .glyphicon {
-        border: 1px solid;
-      padding:5px 10px 5px 40px;
-      background-repeat: no-repeat;
-      background-position: 10px center;
-      background-color: red;
-      border-radius: 3px;
-      }
-    `
-  ]
+  styleUrls: ['./favorite.component.css'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class FavoriteComponent {
  

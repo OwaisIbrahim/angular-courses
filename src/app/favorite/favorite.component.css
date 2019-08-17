@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 .glyphicon {
     border: 1px solid;
     padding:5px 10px 5px 40px;
