@@ -1,6 +1,9 @@
+<button class="btn btn-primary" (click)="onAdd()">Add</button>
 <ul>
     <!-- index and even is ngForOf attribute -->
     <li *ngFor="let course of courses; index as i; even as isEven">
         {{ i }} - {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+        <button class="btn btn-danger" (click)="onRemove(course)">Remove</button>
+        <button class="btn btn-primary" (click)="onChange(course)">Update</button>
     </li>
 </ul>
