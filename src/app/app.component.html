@@ -1,3 +1,6 @@
+<!-- <input type="text" appInputFormat [format]="'lowercase'"> -->
+<input type="text" appInputFormat="'lowercase'">
+<br/>
 <favorite [isFavorite]="post.isFavorite" (change)="onFavo"></favorite>
 <button 
     [style.backgroundColor]="canSave ? 'blue': 'grey'"

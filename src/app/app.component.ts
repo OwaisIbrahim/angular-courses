@@ -30,5 +30,5 @@ export class AppComponent {
   task = {
     title: "Review Application",
     assignee: null
-  }
+  } //app.component.ts
 }
