@@ -1,9 +1,12 @@
+<!-- 1st Way -->
+<div *ngIf="courses.length > 0">List of Courses {{ courses }}</div>
+<div *ngIf="courses.length == 0">No courses yet</div>
 
-<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
-<bootstrap-panel>
-    <ng-container class="heading">Heading</ng-container>
-    <ng-container class="body">
-        <h2>Body</h2>
-        <p>Some content here... </p>
-    </ng-container>
-</bootstrap-panel>
+<!-- 2nd Way -->
+<div *ngIf="courses.length > 0; else noCourses">List of Courses {{ courses }}</div>
+<ng-template #noCourses>No courses yet</ng-template>
+
+<!-- 3rd Way: Recommended -->
+<div *ngIf="courses.length > 0; then courseList else noCoursesAvailable"></div>
+<ng-template #courseList>List of Courses {{ courses }}</ng-template>
+<ng-template #noCoursesAvailable>No courses yet</ng-template>
