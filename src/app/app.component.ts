@@ -8,6 +8,9 @@ import { FavoriteChangedEventArgs } from './favorite/favorite.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  post = {
+    isFavorite: true
+  }
   courses;
 
   loadCourses() {
@@ -17,9 +20,10 @@ export class AppComponent {
       {id:3, name:"course3"}
     ];
   }
-
+  onFavoriteChanged(isFavorite) {
+    console.log('Favorite changed', isFavorite)
+  }
   trackCourse(index, course) {
     return course ? course.id : undefined;
   }
- 
 }
