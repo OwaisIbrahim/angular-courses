@@ -12,8 +12,8 @@ export class SignupFormComponent {
     'username': new FormControl('', [
        Validators.required, 
        Validators.minLength(3),
-       UsernameValidators.cannotContainSpace
-      ]),  //OR new FormGroup() - If form is complex
+       UsernameValidators.cannotContainSpace 
+      ], UsernameValidators.shouldBeUnique),  //OR new FormGroup() - If form is complex
     'password': new FormControl('', [Validators.required, Validators.minLength(5)])
   });
 
