@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    'username': new FormControl('', Validators.required),  //OR new FormGroup() - If form is complex
+    'username': new FormControl('', [Validators.required, Validators.minLength(3)]),  //OR new FormGroup() - If form is complex
     'password': new FormControl('', [Validators.required, Validators.minLength(5)])
   });
 
