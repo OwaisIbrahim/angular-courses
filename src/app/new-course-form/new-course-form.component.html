@@ -1,9 +1,18 @@
-<form action="">
+<form [formGroup]="form">
+    <input formControlName="name">
+    <div formGroupName="contact">
+        <input formControlName="email">
+        <input formControlName="phone">
+    </div>
+</form>
+
+
+<!--<form action="">
     <input 
         type="text" class="form-control"
         (keyup.enter)="addTopic(topic)" #topic>
     <ul class="list-group">
-        <!-- .contols helps to traverse all form control elements in FormArray -->
+
         <li 
             *ngFor="let topic of getTopics.controls"
             (click)="removeTopic(topic)"
@@ -12,3 +21,4 @@
         </li>
     </ul>
 </form>
+-->

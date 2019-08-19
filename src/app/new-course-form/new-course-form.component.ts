@@ -9,7 +9,6 @@ import { FormArray, FormGroup, FormControl, FormBuilder, Validators } from '@ang
 export class NewCourseFormComponent {
   
 //FORM BUILDER
-/* 
     form = new FormGroup({
       name: new FormControl('', Validators.required),
       contact: new FormGroup({
@@ -29,9 +28,8 @@ export class NewCourseFormComponent {
         topics: ([])
       });
     }
-*/
 
-
+/*
   form = new FormGroup({
     topics: new FormArray([])
   });
@@ -47,4 +45,5 @@ export class NewCourseFormComponent {
   get getTopics() {
     return this.form.get('topics') as FormArray;
   }
+*/
 }
