@@ -9,13 +9,22 @@ import { UsernameValidators } from './username.validators';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    'username': new FormControl('', [
-       Validators.required, 
-       Validators.minLength(3),
-       UsernameValidators.cannotContainSpace 
-      ], UsernameValidators.shouldBeUnique),  //OR new FormGroup() - If form is complex
+    'username': new FormControl(
+      '', [
+        Validators.required, 
+        Validators.minLength(3),
+        UsernameValidators.cannotContainSpace 
+      ], 
+      UsernameValidators.shouldBeUnique
+      ),  //OR new FormGroup() - If form is complex
     'password': new FormControl('', [Validators.required, Validators.minLength(5)])
   });
+
+  login() {
+    this.form.setErrors({
+      invalidLogin: true
+    });
+  }
 
   get getUsername() {
     return this.form.get('username');
