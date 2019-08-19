@@ -10,4 +10,10 @@ export class ContactFormComponent {
     console.log(x);
   }
 
+  submit(f) {
+    console.log(f);
+    f.value;
+    f.valid;
+  }
+
 }
