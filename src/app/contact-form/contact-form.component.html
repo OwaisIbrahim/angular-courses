@@ -38,10 +38,29 @@
                 [ngValue]="method">
                 {{ method.name }}
             </option>
-            
-            
         </select>
     </div>
+    <!-- STATIC RADIO BUTTON -->
+    <div class="radio">
+        <label for="">
+            <input ngModel type="radio" name="contactMethodRadio" value="1">
+            Email
+        </label>
+    </div>
+    <div class="radio">
+        <label for="">
+            <input ngModel type="radio" name="contactMethodRadio" value="2">
+            Phone
+        </label>
+    </div>
+    <!-- DYNAMMIC RADIO BUTTON -->
+    <div *ngFor="let method of contactMethods" class="radio">
+        <label  for="">
+            <input ngModel type="radio" name="contactMethodRadio" [value]="method.id">
+            {{method.name}}
+        </label>
+    </div>
+        
     <p>
         {{ f.value | json }}
     </p>
