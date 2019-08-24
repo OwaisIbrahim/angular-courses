@@ -35,9 +35,18 @@ export class PostsComponent {
       .subscribe( response => {
         console.log(response);
         
-      });
+    });
     // this.http.put(this.URL, JSON.stringify(post));
-
+  }
+  
+  deletePost(post) {
+    this.http.delete(this.URL  + '/' + post.id)
+      .subscribe( response => {
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+        
+    });
+    // this.http.put(this.URL, JSON.stringify(post));
   }
 
 }
