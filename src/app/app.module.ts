@@ -17,6 +17,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,11 @@ import { PostsComponent } from './posts/posts.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule    
+    HttpClientModule
   ],
   providers: [
-    CoursesService
+    CoursesService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

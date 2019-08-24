@@ -1,5 +1,6 @@
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-posts',
@@ -26,30 +27,49 @@ export class PostsComponent implements OnInit{
     input.value = '';
 
     this.service.addPost(post)
-      .subscribe(response => {
-        post['id'] =  response['id'];
-        this.posts.splice(0, 0, post);
+      .subscribe(
+        response => {
+          post['id'] =  response['id'];
+          this.posts.splice(0, 0, post);
+        }, 
+        (error: HttpErrorResponse) => {
+          if( error.status === 404 )
+          alert('An unexpected error occurs');
+          console.log(error); 
       });
   }
 
   updatePost(post) {
     this.service.updatePost(post)    
-      .subscribe( response => {
-        let index = this.posts.indexOf(post);
-        this.posts[index]['title'] = 'Hello';
-        console.log(response);
-        
-    });
+      .subscribe( 
+        response => {
+          let index = this.posts.indexOf(post);
+          this.posts[index]['title'] = 'Hello';
+          console.log(response);
+        },
+        (error: HttpErrorResponse) => {
+          alert('An unexpected error occurs');
+          console.log(error);
+        });
     // this.http.put(this.URL, JSON.stringify(post));
   }
   
   deletePost(post) {
     this.service.removePost(post.id)    
-      .subscribe( response => {
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-        
-    });
+      .subscribe( 
+        response => {
+          let index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+          console.log(response);
+        }, 
+        (error: HttpErrorResponse) => {
+          if( error.status === 404 ) {
+            alert('This post has been deleted');
+          } else {
+            alert('An unexpected error occurs');
+            console.log(error);
+          }
+        });
   }
 
 }
