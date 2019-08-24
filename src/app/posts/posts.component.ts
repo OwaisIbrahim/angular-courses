@@ -33,6 +33,8 @@ export class PostsComponent {
   updatePost(post) {
     this.http.patch(this.URL + '/' + post.id, JSON.stringify({ isRead: true }))
       .subscribe( response => {
+        let index = this.posts.indexOf(post);
+        this.posts[index]['title'] = 'Hello';
         console.log(response);
         
     });
@@ -46,7 +48,6 @@ export class PostsComponent {
         this.posts.splice(index, 1);
         
     });
-    // this.http.put(this.URL, JSON.stringify(post));
   }
 
 }
