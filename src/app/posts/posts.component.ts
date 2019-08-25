@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
@@ -34,10 +35,11 @@ export class PostsComponent implements OnInit{
           post['id'] =  response['id'];
           this.posts.splice(0, 0, post);
         }, 
-        (error: HttpErrorResponse) => {
-          if( error.status === 404 )
-          alert('An unexpected error occurs');
-          console.log(error); 
+        (error: AppError) => {
+          if( error instanceof BadInput ) { }
+            // this.form.setErrors(error.OriginalError);
+          else throw error; 
+          //this throw error will go to our custom AppErrorHandler
       });
   }
 
@@ -49,9 +51,9 @@ export class PostsComponent implements OnInit{
           this.posts[index]['title'] = 'Hello';
           console.log(response);
         },
-        (error: HttpErrorResponse) => {
-          alert('An unexpected error occurs');
-          console.log(error);
+        (error: AppError) => {
+          if( error instanceof NotFoundError  ) { }
+          else throw error;
         });
     // this.http.put(this.URL, JSON.stringify(post));
   }
@@ -67,10 +69,7 @@ export class PostsComponent implements OnInit{
         (error: AppError) => {
           if( error instanceof NotFoundError  ) {
             alert('This post has been deleted');
-          } else {
-            alert('An unexpected error occurs');
-            console.log(error);
-          }
+          } else throw error;
         });
   }
 

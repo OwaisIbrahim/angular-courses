@@ -1,3 +1,4 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { CoursesService } from './courses.service';
@@ -6,7 +7,7 @@ import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SummaryPipe } from './summary.pipe';
@@ -41,7 +42,9 @@ import { PostService } from './services/post.service';
   ],
   providers: [
     CoursesService,
-    PostService
+    PostService,
+    // Replace angular provided class(ErrorHandler) to useClass(AppErrorHandler)
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
