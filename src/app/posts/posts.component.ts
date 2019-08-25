@@ -69,7 +69,7 @@ export class PostsComponent implements OnInit{
         (error: AppError) => {
           if( error instanceof NotFoundError  ) {
             alert('This post has been deleted');
-          } else throw error;
+          } else throw error; 
         });
   }
 
